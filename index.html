@@ -1,0 +1,649 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MS ARCHIVE — 宇宙世紀與全世代機動戰士檔案館</title>
+    <meta
+      name="description"
+      content="使用原生 HTML5、CSS3 與 Vanilla JavaScript 打造的機動戰士技術檔案館，收錄宇宙世紀與跨世代 19 具代表性機體之實機與模型寫真、雙機雷達對比、系統結構解析與武裝有效射程標示。"
+    />
+    <meta property="og:title" content="MS ARCHIVE — 宇宙世紀與全世代機動戰士檔案館" />
+    <meta
+      property="og:description"
+      content="完整收錄 RX-78-2、MS-06S、ZGMF-X10A 自由、Hi-ν、新安州、Ξ 鋼彈、非凡攻擊自由、命運 Spec II、00強化模組、獵魔與風靈鋼彈改修型等 19 具現役模型與機體檔案。"
+    />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Noto+Sans+TC:wght@400;500;600;700&family=Public+Sans:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <!-- Subtle Gundam Hangar HUD / V-Fin Wireframe Backdrop -->
+    <div class="gundam-bg-backdrop" aria-hidden="true">
+      <svg class="gundam-bg-svg" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice">
+        <defs>
+          <radialGradient id="gundamCoreGlow" cx="50%" cy="42%" r="46%">
+            <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.18" />
+            <stop offset="55%" stop-color="#1d4ed8" stop-opacity="0.08" />
+            <stop offset="100%" stop-color="#081122" stop-opacity="0" />
+          </radialGradient>
+        </defs>
+        <rect width="1440" height="900" fill="url(#gundamCoreGlow)" />
+        <!-- Outer Tactical Reticle Rings -->
+        <circle cx="720" cy="410" r="330" fill="none" stroke="rgba(56, 189, 248, 0.12)" stroke-width="1" stroke-dasharray="10 8" />
+        <circle cx="720" cy="410" r="248" fill="none" stroke="rgba(96, 165, 250, 0.14)" stroke-width="1.2" />
+        <circle cx="720" cy="410" r="158" fill="none" stroke="rgba(56, 189, 248, 0.1)" stroke-width="1" stroke-dasharray="4 6" />
+        <!-- Gundam V-Fin & Head Crest Geometric Silhouette -->
+        <polygon points="720,175 752,256 720,234 688,256" fill="rgba(56, 189, 248, 0.06)" stroke="rgba(56, 189, 248, 0.22)" stroke-width="1.4" />
+        <polyline points="495,212 692,292 720,272 748,292 945,212" fill="none" stroke="rgba(96, 165, 250, 0.24)" stroke-width="2" />
+        <polyline points="545,246 696,308 720,290 744,308 895,246" fill="none" stroke="rgba(56, 189, 248, 0.16)" stroke-width="1.2" />
+        <!-- Mecha Torso & Shoulder Frame Blueprint Lines -->
+        <polygon points="622,356 720,332 818,356 792,522 720,554 648,522" fill="rgba(29, 78, 216, 0.05)" stroke="rgba(96, 165, 250, 0.16)" stroke-width="1.2" />
+        <polygon points="516,368 618,342 618,448 492,438" fill="none" stroke="rgba(56, 189, 248, 0.12)" stroke-width="1" />
+        <polygon points="924,368 822,342 822,448 948,438" fill="none" stroke="rgba(56, 189, 248, 0.12)" stroke-width="1" />
+        <!-- Crosshair Axes & HUD Corner Brackets -->
+        <line x1="80" y1="410" x2="1360" y2="410" stroke="rgba(56, 189, 248, 0.08)" stroke-width="1" stroke-dasharray="6 8" />
+        <line x1="720" y1="40" x2="720" y2="860" stroke="rgba(56, 189, 248, 0.08)" stroke-width="1" stroke-dasharray="6 8" />
+        <polyline points="48,96 48,48 96,48" fill="none" stroke="rgba(56, 189, 248, 0.24)" stroke-width="1.5" />
+        <polyline points="1344,48 1392,48 1392,96" fill="none" stroke="rgba(56, 189, 248, 0.24)" stroke-width="1.5" />
+        <polyline points="48,804 48,852 96,852" fill="none" stroke="rgba(56, 189, 248, 0.24)" stroke-width="1.5" />
+        <polyline points="1344,852 1392,852 1392,804" fill="none" stroke="rgba(56, 189, 248, 0.24)" stroke-width="1.5" />
+      </svg>
+    </div>
+
+    <a class="skip-link" href="#main-content">跳至主要內容</a>
+
+    <!-- Top Navigation Bar (Strict 3-Zone Contract) -->
+    <header class="site-header">
+      <div class="container header-inner">
+        <a href="#top" class="brand-wordmark">MS ARCHIVE</a>
+
+        <nav class="primary-nav" aria-label="主要導覽">
+          <a href="#archive" class="nav-link">機體圖鑑</a>
+          <a href="#comparator" class="nav-link">性能對比</a>
+          <a href="#maintenance" class="nav-link">整備檢查</a>
+          <a href="#timeline" class="nav-link">宇宙世紀</a>
+        </nav>
+
+        <div class="header-action">
+          <a href="#archive" class="btn-primary">探索機庫</a>
+        </div>
+      </div>
+    </header>
+
+    <main id="main-content">
+      <!-- Hero Exhibition Split -->
+      <section id="top" class="hero-section">
+        <div class="container">
+          <div class="hero-grid">
+            <div class="hero-copy">
+              <p class="eyebrow-meta">Mobile Suit Technical Monograph · U.C. / C.E. / A.D. / P.D. / A.S.</p>
+              <h1 class="hero-title">全世代機動戰士檔案館</h1>
+              <p class="hero-lead">
+                從一年戰爭的 RX-78-2 原型機出發，橫跨宇宙世紀、自由鋼彈與 SEED 自由紀元、天人 GN 體系至水星魔女與模型市場現役最新機體，以實機檔案與精密模型寫真完整收錄 19 具代表性機動戰士之規格與武裝數據。
+              </p>
+              <div class="hero-cta-row">
+                <a href="#archive" class="btn-primary btn-lg">檢視機體規格</a>
+                <a href="#comparator" class="btn-secondary-link">雙機性能雷達對比</a>
+              </div>
+            </div>
+
+            <figure class="hero-figure">
+              <div class="media-frame media-16x9">
+                <img
+                  src="./src/assets/images/hero_gundam_hangar_1794989043756.jpg"
+                  alt="RX-78-2 機動戰士停放於測試格納庫整備架中的實機側面視角"
+                  referrerpolicy="no-referrer"
+                  loading="eager"
+                />
+                <div class="media-fallback" hidden>
+                  <span class="fallback-code">RX-78-2</span>
+                  <span class="fallback-label">測試格納庫實機視圖</span>
+                </div>
+              </div>
+              <figcaption class="figure-caption">
+                圖 01 · RX-78-2 原型機動戰士於軌道前哨整備格納庫進行出廠前裝甲檢視
+              </figcaption>
+            </figure>
+          </div>
+
+          <!-- 4-Column Operational Summary Strip (Below Hero Split) -->
+          <div class="summary-strip" aria-label="檔案館收錄摘要">
+            <div class="summary-cell">
+              <span class="summary-label">收錄機體型號</span>
+              <span class="summary-value tabular">19 具跨世代機體</span>
+            </div>
+            <div class="summary-cell">
+              <span class="summary-label">涵蓋紀元體系</span>
+              <span class="summary-value tabular">U.C. · C.E. · A.U.</span>
+            </div>
+            <div class="summary-cell">
+              <span class="summary-label">動力反應架構</span>
+              <span class="summary-value">熱核爐 / GN / 亞哈 / 帕梅特</span>
+            </div>
+            <div class="summary-cell">
+              <span class="summary-label">影像收錄規格</span>
+              <span class="summary-value">實機檔案 · 模型寫真</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 01: Mobile Suit Archive -->
+      <section id="archive" class="section-block">
+        <div class="container">
+          <div class="section-header">
+            <div>
+              <p class="section-index">01. 機體檔案總覽</p>
+              <h2 class="section-title">機動戰士機械圖鑑</h2>
+            </div>
+            <p class="section-desc">
+              依所屬陣營與骨架技術篩選機體，點擊任一機體卡片可開啟完整技術履歷並切換作業模式。
+            </p>
+          </div>
+
+          <!-- Filter & Search Controls -->
+          <div class="archive-toolbar">
+            <div class="filter-tabs" role="tablist" aria-label="紀元與技術系統篩選">
+              <button
+                type="button"
+                class="filter-tab is-active"
+                data-filter="all"
+                role="tab"
+                aria-selected="true"
+              >
+                全部機體 (19)
+              </button>
+              <button
+                type="button"
+                class="filter-tab"
+                data-filter="uc"
+                role="tab"
+                aria-selected="false"
+              >
+                U.C. 宇宙世紀
+              </button>
+              <button
+                type="button"
+                class="filter-tab"
+                data-filter="ce"
+                role="tab"
+                aria-selected="false"
+              >
+                C.E. 紀元 / SEED
+              </button>
+              <button
+                type="button"
+                class="filter-tab"
+                data-filter="au"
+                role="tab"
+                aria-selected="false"
+              >
+                跨紀元名機
+              </button>
+              <button
+                type="button"
+                class="filter-tab"
+                data-filter="psycho"
+                role="tab"
+                aria-selected="false"
+              >
+                感應 / 共振系統
+              </button>
+            </div>
+
+            <div class="toolbar-inputs">
+              <label class="search-field" for="suit-search">
+                <span class="sr-only">搜尋機體型號、名稱、紀元或模型規格</span>
+                <input
+                  id="suit-search"
+                  type="search"
+                  placeholder="搜尋型號、機名、駕駛員或 RG/MG..."
+                  autocomplete="off"
+                />
+              </label>
+
+              <label class="select-field" for="suit-sort">
+                <span class="sr-only">排序方式</span>
+                <select id="suit-sort">
+                  <option value="era">依紀元與體系排序</option>
+                  <option value="output">依發電機出力排序</option>
+                  <option value="height">依全高尺寸排序</option>
+                </select>
+              </label>
+            </div>
+          </div>
+
+          <!-- Mobile Suit Cards Grid -->
+          <div id="suit-grid" class="suit-grid" aria-live="polite"></div>
+
+          <div id="empty-state" class="empty-state" hidden>
+            <p class="empty-title">找不到符合條件的機動戰士資料</p>
+            <p class="empty-desc">請嘗試清除搜尋關鍵字或切換回全部機體檢視。</p>
+            <button type="button" id="reset-filters-btn" class="btn-primary">重設篩選條件</button>
+          </div>
+
+          <!-- 1:1 Scale Mobile Suit Size Comparison Card -->
+          <article id="scale-comparator" class="scale-card" aria-labelledby="scale-card-title">
+            <div class="scale-card-header">
+              <div>
+                <p class="scale-card-kicker">1:1 SCALE ELEVATION COMPARISON</p>
+                <h3 id="scale-card-title" class="scale-card-title">機體尺寸 1:1 比例並排比較</h3>
+                <p class="scale-card-desc">
+                  以統一公尺標尺（0–30 m 動態量程）與 1.75 m 人體基準繪製，真實還原歷代與新型機動戰士的體型差距。
+                </p>
+              </div>
+
+              <div class="scale-controls">
+                <div class="scale-select-group">
+                  <label for="scale-select-a" class="selector-label selector-a">機體 A（藍線）</label>
+                  <select id="scale-select-a" class="compare-select"></select>
+                </div>
+                <button
+                  type="button"
+                  id="scale-swap-btn"
+                  class="btn-outline scale-swap-btn"
+                  aria-label="對調機體 A 與機體 B"
+                >
+                  對調
+                </button>
+                <div class="scale-select-group">
+                  <label for="scale-select-b" class="selector-label selector-b">機體 B（紅線）</label>
+                  <select id="scale-select-b" class="compare-select"></select>
+                </div>
+              </div>
+            </div>
+
+            <div id="scale-stage" class="scale-stage" aria-live="polite"></div>
+
+            <div id="scale-metrics" class="scale-metrics-strip"></div>
+          </article>
+        </div>
+      </section>
+
+      <!-- Section 02: Interactive Spec Comparator & Canvas Radar -->
+      <section id="comparator" class="section-block section-alt">
+        <div class="container">
+          <div class="section-header">
+            <div>
+              <p class="section-index">02. 雙機性能實測對比</p>
+              <h2 class="section-title">五軸工程雷達與規格差值</h2>
+            </div>
+            <p class="section-desc">
+              選擇兩具機體進行直接數據比對，五軸圖表採用原生 HTML5 Canvas 繪製並即時計算機械參數差值。
+            </p>
+          </div>
+
+          <div class="comparator-layout">
+            <!-- Left: Radar Chart -->
+            <div class="radar-panel">
+              <div class="comparator-selectors">
+                <div class="selector-group">
+                  <label for="compare-select-a" class="selector-label selector-a">機體 A（藍線基準）</label>
+                  <select id="compare-select-a" class="compare-select"></select>
+                </div>
+                <button
+                  type="button"
+                  id="compare-swap-btn"
+                  class="btn-outline compare-swap-btn"
+                  aria-label="互換機體 A 與機體 B"
+                >
+                  對調
+                </button>
+                <div class="selector-group">
+                  <label for="compare-select-b" class="selector-label selector-b">機體 B（紅線對照）</label>
+                  <select id="compare-select-b" class="compare-select"></select>
+                </div>
+              </div>
+
+              <div class="canvas-wrap">
+                <canvas
+                  id="radar-canvas"
+                  width="460"
+                  height="400"
+                  aria-label="雙機性能五軸工程雷達圖"
+                ></canvas>
+                <div
+                  id="radar-tooltip"
+                  class="radar-tooltip"
+                  role="status"
+                  aria-live="polite"
+                  hidden
+                ></div>
+              </div>
+
+              <div class="radar-legend">
+                <span class="legend-item">
+                  <span class="legend-swatch swatch-a" aria-hidden="true"></span>
+                  <span id="legend-name-a">RX-78-2 鋼彈</span>
+                </span>
+                <span class="legend-item">
+                  <span class="legend-swatch swatch-b" aria-hidden="true"></span>
+                  <span id="legend-name-b">MS-06S 夏亞專用薩克 II</span>
+                </span>
+              </div>
+            </div>
+
+            <!-- Right: Tabular Comparison Matrix -->
+            <div class="matrix-panel">
+              <table class="spec-table">
+                <thead>
+                  <tr>
+                    <th scope="col">工程檢驗項目</th>
+                    <th scope="col" id="th-unit-a">機體 A</th>
+                    <th scope="col" id="th-unit-b">機體 B</th>
+                    <th scope="col">基準差值 (A − B)</th>
+                  </tr>
+                </thead>
+                <tbody id="compare-table-body"></tbody>
+              </table>
+
+              <div id="compare-summary-note" class="compare-note"></div>
+            </div>
+          </div>
+
+          <!-- Advantage Distribution Heatmap View -->
+          <div class="heatmap-panel" aria-labelledby="heatmap-heading">
+            <div class="heatmap-header">
+              <div>
+                <h3 id="heatmap-heading" class="heatmap-title">五大屬性優勢分佈熱力圖</h3>
+                <p class="heatmap-subtitle">
+                  依所選兩具機體於五大性能維度的數值差異（A − B）動態著色，快速辨識雙方戰術優勢區間。
+                </p>
+              </div>
+
+              <div class="heatmap-controls">
+                <div class="heatmap-mode-tabs" role="tablist" aria-label="熱力圖檢視模式">
+                  <button
+                    type="button"
+                    class="heatmap-mode-tab is-active"
+                    data-heatmap-mode="matrix"
+                    role="tab"
+                    aria-selected="true"
+                  >
+                    熱力矩陣
+                  </button>
+                  <button
+                    type="button"
+                    class="heatmap-mode-tab"
+                    data-heatmap-mode="spectrum"
+                    role="tab"
+                    aria-selected="false"
+                  >
+                    優勢光譜
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="heatmap-scale-bar" aria-label="優勢色階說明">
+              <span class="scale-end scale-b" id="heatmap-scale-b">機體 B 優勢 (−60)</span>
+              <div class="heatmap-scale-gradient" aria-hidden="true"></div>
+              <span class="scale-end scale-a" id="heatmap-scale-a">機體 A 優勢 (+60)</span>
+            </div>
+
+            <div id="heatmap-body" class="heatmap-body" aria-live="polite"></div>
+
+            <div id="heatmap-summary" class="heatmap-summary"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 03: Mobile Suit Maintenance Checklist & Readiness Report -->
+      <section id="maintenance" class="section-block">
+        <div class="container">
+          <div class="section-header">
+            <div>
+              <p class="section-index">03. 出擊前技術檢驗</p>
+              <h2 class="section-title">機體維護檢查清單</h2>
+            </div>
+            <p class="section-desc">
+              選擇待檢機體並逐項勾選基礎整備作業，全數確認通過後將自動生成「機體整備完成」出擊模擬報告。
+            </p>
+          </div>
+
+          <div class="maintenance-shell">
+            <!-- Left: Interactive Checklist -->
+            <div class="maintenance-checklist-panel">
+              <div class="maintenance-toolbar">
+                <div class="maintenance-select-group">
+                  <label for="maintenance-suit-select" class="selector-label">整備目標機體</label>
+                  <select id="maintenance-suit-select" class="compare-select"></select>
+                </div>
+
+                <div class="maintenance-toolbar-actions">
+                  <button type="button" id="maintenance-check-all" class="btn-outline">全部勾選</button>
+                  <button type="button" id="maintenance-reset-btn" class="btn-outline">重設清單</button>
+                </div>
+              </div>
+
+              <div class="maintenance-progress-wrap">
+                <div class="maintenance-progress-head">
+                  <span class="maintenance-progress-label">整備點檢進度</span>
+                  <span id="maintenance-progress-text" class="maintenance-progress-count tabular">0 / 6 項已完成</span>
+                </div>
+                <div class="maintenance-progress-track" aria-hidden="true">
+                  <div id="maintenance-progress-fill" class="maintenance-progress-fill" style="width: 0%"></div>
+                </div>
+              </div>
+
+              <div id="maintenance-checklist" class="maintenance-list" role="group" aria-label="機體基礎整備項目"></div>
+            </div>
+
+            <!-- Right: Hangar Readiness / Completion Report -->
+            <aside id="maintenance-report" class="maintenance-report-panel" aria-live="polite"></aside>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 04: Universal Century Engineering Timeline -->
+      <section id="timeline" class="section-block section-alt">
+        <div class="container">
+          <div class="section-header">
+            <div>
+              <p class="section-index">04. 宇宙世紀技術演進</p>
+              <h2 class="section-title">裝甲與動力世代里程碑</h2>
+            </div>
+            <p class="section-desc">
+              點選不同宇宙世紀年代，檢視米諾夫斯基物理學與可動骨架對機動戰士設計的關鍵變革。
+            </p>
+          </div>
+
+          <div class="timeline-shell">
+            <div class="timeline-tabs" role="tablist" aria-label="宇宙世紀年代切換">
+              <button
+                type="button"
+                class="timeline-tab is-active"
+                data-era="0079"
+                role="tab"
+                aria-selected="true"
+              >
+                <span class="era-year tabular">U.C. 0079</span>
+                <span class="era-name">一年戰爭與 V 作戰</span>
+              </button>
+              <button
+                type="button"
+                class="timeline-tab"
+                data-era="0087"
+                role="tab"
+                aria-selected="false"
+              >
+                <span class="era-year tabular">U.C. 0087</span>
+                <span class="era-name">可動骨架與可變形時代</span>
+              </button>
+              <button
+                type="button"
+                class="timeline-tab"
+                data-era="0093"
+                role="tab"
+                aria-selected="false"
+              >
+                <span class="era-year tabular">U.C. 0093</span>
+                <span class="era-name">精神感應框架實用化</span>
+              </button>
+              <button
+                type="button"
+                class="timeline-tab"
+                data-era="0096"
+                role="tab"
+                aria-selected="false"
+              >
+                <span class="era-year tabular">U.C. 0096–0105</span>
+                <span class="era-name">全感應框架與米諾夫斯基飛行</span>
+              </button>
+              <button
+                type="button"
+                class="timeline-tab"
+                data-era="ce71"
+                role="tab"
+                aria-selected="false"
+              >
+                <span class="era-year tabular">C.E. 71</span>
+                <span class="era-name">反中子干擾器與相轉移裝甲</span>
+              </button>
+              <button
+                type="button"
+                class="timeline-tab"
+                data-era="multiverse"
+                role="tab"
+                aria-selected="false"
+              >
+                <span class="era-year tabular">C.E. 75 / A.D. / P.D. / A.S.</span>
+                <span class="era-name">跨紀元多元動力體系</span>
+              </button>
+            </div>
+
+            <article id="timeline-detail" class="timeline-detail" aria-live="polite"></article>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Quiet Institutional Footer -->
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <div class="footer-brand">
+          <span class="footer-wordmark">MS ARCHIVE</span>
+          <p class="footer-copy">全世代機動戰士檔案館 · Full-Spectrum Mobile Suit Technical Archive</p>
+        </div>
+
+        <nav class="footer-links" aria-label="頁尾導覽">
+          <a href="#archive">機體圖鑑</a>
+          <a href="#comparator">性能對比</a>
+          <a href="#maintenance">整備檢查</a>
+          <a href="#timeline">宇宙世紀</a>
+        </nav>
+      </div>
+    </footer>
+
+    <!-- Mobile Suit Technical Dossier Modal -->
+    <div id="suit-modal" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="modal-title" hidden>
+      <div class="modal-dialog">
+        <div class="modal-header">
+          <div>
+            <p id="modal-meta" class="modal-meta"></p>
+            <h3 id="modal-title" class="modal-title"></h3>
+          </div>
+          <button type="button" id="modal-close-btn" class="modal-close" aria-label="關閉機體詳情">關閉</button>
+        </div>
+
+        <div class="modal-body">
+          <div class="modal-visual-col">
+            <div class="media-frame media-4x3" id="modal-media-frame">
+              <img id="modal-img" src="" alt="" referrerpolicy="no-referrer" />
+              <div class="media-fallback" hidden>
+                <span id="modal-fallback-code" class="fallback-code"></span>
+                <span class="fallback-label">機體攝影圖檔暫無訊號</span>
+              </div>
+              <div id="modal-radar-overlay" class="card-range-radar-overlay" hidden></div>
+            </div>
+
+            <div class="mode-switch-box">
+              <div class="mode-switch-head">
+                <span class="mode-label">機體作業模式切換</span>
+                <button type="button" id="modal-mode-toggle" class="btn-mode">切換極限出力模式</button>
+              </div>
+              <p id="modal-mode-desc" class="mode-desc"></p>
+            </div>
+          </div>
+
+          <div class="modal-info-col">
+            <p id="modal-summary" class="modal-summary"></p>
+
+            <dl id="modal-specs" class="modal-spec-list"></dl>
+
+            <div class="armament-block">
+              <h4 class="armament-heading">標準固定與攜帶武裝</h4>
+              <ul id="modal-armaments" class="armament-list"></ul>
+            </div>
+
+            <div id="modal-engineering-box" class="modal-engineering-box"></div>
+
+            <div class="modal-actions">
+              <button type="button" id="modal-assign-a" class="btn-primary">設為對比機體 A</button>
+              <button type="button" id="modal-assign-b" class="btn-outline">設為對比機體 B</button>
+              <button type="button" id="modal-assign-scale" class="btn-outline">進行 1:1 尺寸比較</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hangar Launch Sequence Animation Modal -->
+    <div
+      id="launch-modal"
+      class="modal-backdrop launch-modal-backdrop"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="launch-modal-title"
+      hidden
+    >
+      <div class="launch-dialog">
+        <div class="modal-header launch-modal-header">
+          <div>
+            <p id="launch-modal-kicker" class="modal-meta"></p>
+            <h3 id="launch-modal-title" class="modal-title"></h3>
+          </div>
+          <button type="button" id="launch-modal-close-btn" class="modal-close" aria-label="關閉機庫出發動畫">
+            關閉
+          </button>
+        </div>
+
+        <div class="launch-stage-wrap">
+          <canvas
+            id="launch-canvas"
+            width="960"
+            height="480"
+            aria-label="機體從機庫彈射出發模擬動畫"
+          ></canvas>
+
+          <div class="launch-phase-strip" aria-live="polite">
+            <span class="launch-phase-step" data-phase="1">1. 固定鎖解除 · 動力啟動</span>
+            <span class="launch-phase-step" data-phase="2">2. 彈射軌道加速推進</span>
+            <span class="launch-phase-step" data-phase="3">3. 機庫門開啟 · 出擊升空</span>
+          </div>
+        </div>
+
+        <div class="launch-hud-bar">
+          <div class="launch-info-col">
+            <p id="launch-bay-meta" class="launch-bay-meta"></p>
+            <p id="launch-callout" class="launch-callout"></p>
+            <p id="launch-scene-desc" class="launch-scene-desc"></p>
+          </div>
+          <div class="launch-controls-col">
+            <button type="button" id="launch-replay-btn" class="btn-primary">重播動畫</button>
+            <button type="button" id="launch-close-bottom-btn" class="btn-outline">返回整備報告</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="./script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,8 @@
+{
+  "name": "MS ARCHIVE — 宇宙世紀機動戰士檔案館",
+  "description": "使用原生 HTML5、CSS3 與 Vanilla JavaScript 打造的宇宙世紀機動戰士技術檔案館，包含機體圖鑑、雙機雷達性能對比與 GitHub Pages 靜態部署配置。",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
